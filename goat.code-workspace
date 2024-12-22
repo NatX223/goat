@@ -12,7 +12,6 @@
             "name": "🌋 Core",
             "path": "./typescript/packages/core"
         },
-        // Adapters
         {
             "name": "[Adapter] 🎧 eleven-labs",
             "path": "./typescript/packages/adapters/eleven-labs"
@@ -33,7 +32,6 @@
             "name": "[Adapter] 🤖 vercel-ai",
             "path": "./typescript/packages/adapters/vercel-ai"
         },
-        // Plugins
         {
             "name": "[Plugin] 💰 erc20",
             "path": "./typescript/packages/plugins/erc20"
@@ -67,6 +65,10 @@
             "path": "./typescript/packages/plugins/meteora"
         },
         {
+            "name": "[Plugin] token-launcher",
+            "path": "./typescript/packages/plugins/token-launcher"
+        },
+        {
             "name": "[Plugin] 🪙 spl token",
             "path": "./typescript/packages/plugins/spl-token"
         },
@@ -82,7 +84,6 @@
             "name": "[Plugin] 🦄 uniswap",
             "path": "./typescript/packages/plugins/uniswap"
         },
-        // Wallets
         {
             "name": "[Wallet] 🅰 aptos",
             "path": "./typescript/packages/wallets/aptos"
@@ -111,12 +112,10 @@
             "name": "[Wallet] 🔥 lit",
             "path": "./typescript/packages/wallets/lit-protocol"
         },
-        // Docs
         {
             "name": "📚 Docs",
             "path": "./docs"
         },
-        // Examples
         {
             "name": "🚀 Examples",
             "path": "./typescript/examples"
