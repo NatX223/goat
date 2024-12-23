@@ -596,9 +596,9 @@ importers:
       '@goat-sdk/plugin-erc721':
         specifier: workspace:*
         version: link:../../../packages/plugins/erc721
-      '@goat-sdk/plugin-token-launcher':
+      '@goat-sdk/plugin-kim':
         specifier: workspace:*
-        version: link:../../../packages/plugins/token-launcher
+        version: link:../../../packages/plugins/kim
       '@goat-sdk/wallet-evm':
         specifier: workspace:*
         version: link:../../../packages/wallets/evm
@@ -915,6 +915,9 @@ importers:
       '@goat-sdk/core':
         specifier: workspace:*
         version: link:../../core
+      '@goat-sdk/crossmint':
+        specifier: 0.3.6
+        version: 0.3.6(@goat-sdk/core@packages+core)(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)
       '@goat-sdk/wallet-evm':
         specifier: workspace:*
         version: link:../../wallets/evm
@@ -2688,6 +2691,22 @@ packages:
   '@fal-ai/client@1.2.0':
     resolution: {integrity: sha512-MNCnE5icY+OM5ahgYJItmydZ7AxhtzhgA5tQI13jVntzhLT0z+tetHIlAL1VA0XFZgldDzqxeTf9Pr5TW3VErg==}
     engines: {node: '>=18.0.0'}
+
+  '@goat-sdk/crossmint@0.3.6':
+    resolution: {integrity: sha512-UpjXlhBpB8F/LkEEusu3xPe5ZBe+wZ5sASgUQRoCvKGqpuVzj9MKZ8jTbxzgQGt55NumnEgOLCAl/IIkOHBQkw==}
+    peerDependencies:
+      '@goat-sdk/core': 0.4.0
+
+  '@goat-sdk/wallet-evm@0.2.0':
+    resolution: {integrity: sha512-w/sWi7WHsTz8G+jNWI0xJ+l4wWOVFrSxh7PHfYOEZQyFexOioEdEG5QGYkgYT3/VoYApsx9G1H8itKxs1Mg5Mw==}
+    peerDependencies:
+      '@goat-sdk/core': 0.4.0
+
+  '@goat-sdk/wallet-solana@0.2.4':
+    resolution: {integrity: sha512-in2DBVaSJvc3XTMFAEOfzLKzuVJY2GSQt+kSrEpsiTC5WGfqWd8cKvYsSrBkgw7TKqNlMUVUbYV0QHwgNmQP5w==}
+    peerDependencies:
+      '@goat-sdk/core': 0.4.0
+      '@solana/web3.js': 1.95.8
 
   '@google-cloud/vertexai@1.9.0':
     resolution: {integrity: sha512-8brlcJwFXI4fPuBtsDNQqCdWZmz8gV9jeEKOU0vc5H2SjehCQpXK/NwuSEr916zbhlBHtg/sU37qQQdgvh5BRA==}
@@ -11329,6 +11348,46 @@ snapshots:
       '@msgpack/msgpack': 3.0.0-beta2
       eventsource-parser: 1.1.2
       robot3: 0.4.1
+
+  '@goat-sdk/crossmint@0.3.6(@goat-sdk/core@packages+core)(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@crossmint/common-sdk-base': 0.3.1
+      '@goat-sdk/core': link:packages/core
+      '@goat-sdk/wallet-evm': 0.2.0(@goat-sdk/core@packages+core)(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)
+      '@goat-sdk/wallet-solana': 0.2.4(@goat-sdk/core@packages+core)(@solana/web3.js@1.95.8(bufferutil@4.0.8)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)
+      '@solana/web3.js': 1.95.8(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      abitype: 1.0.7(typescript@5.6.3)(zod@3.23.8)
+      bs58: 6.0.0
+      viem: 2.21.49(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)(zod@3.23.8)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - typescript
+      - utf-8-validate
+
+  '@goat-sdk/wallet-evm@0.2.0(@goat-sdk/core@packages+core)(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@goat-sdk/core': link:packages/core
+      abitype: 1.0.7(typescript@5.6.3)(zod@3.23.8)
+      viem: 2.21.49(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)(zod@3.23.8)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+
+  '@goat-sdk/wallet-solana@0.2.4(@goat-sdk/core@packages+core)(@solana/web3.js@1.95.8(bufferutil@4.0.8)(utf-8-validate@5.0.10))(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@goat-sdk/core': link:packages/core
+      '@solana/web3.js': 1.95.8(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      tweetnacl: 1.0.3
+      viem: 2.21.49(bufferutil@4.0.8)(typescript@5.6.3)(utf-8-validate@5.0.10)(zod@3.23.8)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
 
   '@google-cloud/vertexai@1.9.0':
     dependencies:

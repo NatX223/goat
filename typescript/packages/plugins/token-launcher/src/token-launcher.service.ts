@@ -5,9 +5,10 @@ import { TOKEN_FACTORY_ABI } from "./abi/factory";
 import {
     GetTokenFactoryAddressParams,
     TokenCreationParams,
+    GetTokenAddressParams
 } from "./parameters";
 
-const TOKEN_FACTORY_ADDRESS = "0xE9B7A8da59c02a6Dcc643AEA3f6fe6E9B57CA127"
+const TOKEN_FACTORY_ADDRESS = "0xE9B7A8da59c02a6Dcc643AEA3f6fe6E9B57CA127";
 
 export class TokenLauncherService {
     @Tool({
@@ -36,10 +37,39 @@ export class TokenLauncherService {
                 functionName: "deployToken",
                 args: [tokenName, tokenSymbol],
             });
+            
+            // const tokenAddress = await walletClient.read({
+            //     address: TOKEN_FACTORY_ADDRESS,
+            //     abi: TOKEN_FACTORY_ABI,
+            //     functionName: "latestTokenAddress",
+            // }) as { value: string };
 
+            // return tokenAddress.value;
             return hash.hash;
         } catch (error) {
             throw Error(`Failed to create token: ${error}`);
         }
     }
+
+    @Tool({
+        name: "token_address_getter_function",
+        description: "Returns the address of a deployed token",
+    })
+    async getTokenAddress(
+        walletClient: EVMWalletClient,
+        parameters: GetTokenAddressParams,
+    ): Promise<string> {
+        try {
+            const tokenAddress = await walletClient.read({
+                address: TOKEN_FACTORY_ADDRESS,
+                abi: TOKEN_FACTORY_ABI,
+                functionName: "latestTokenAddress",
+            }) as { value: string };
+
+            return tokenAddress.value;
+        } catch (error) {
+            throw Error(`Failed to create token: ${error}`);
+        }
+    }
+
 }
